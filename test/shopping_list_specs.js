@@ -5,6 +5,7 @@ describe('ShoppingListItem', function() {
 
   beforeEach(function () {
     item = new ShoppingListItem('apple', 'it is red');
+    item.check();
   });
 
   it('Shopping list should be a Class', function () {
@@ -26,10 +27,15 @@ describe('ShoppingListItem', function() {
 
   });
 
-    it('ShoppingListItem should have a constructor that sets the properties of \'name\' and \'description\'', function () {
+  it('ShoppingListItem should have a constructor that sets the properties of \'name\' and \'description\'', function () {
     expect(item.name).to.equal('apple');
     expect(item.description).to.equal('it is red');
 
+  });
+
+  it('ShoppingListItem should have a method named \'check\' that sets the value of \'is_done\' to true', function () {
+    expect(ShoppingListItem).to.respondTo('check');
+    expect(item.is_done).to.equal(true);
   });
 
 
