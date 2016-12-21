@@ -56,7 +56,7 @@ describe('ShoppingList', function () {
    list = new ShoppingList();
    apple = new ShoppingListItem('apple', 'it is red');
    banana = new ShoppingListItem('banana', 'it is yellow')
-   soda = new ShoppingListItem('soda', 'it\'s a drink');
+   soda = new ShoppingListItem('soda', 'it is a drink');
    chocolate = new ShoppingListItem('chocolate', 'it is dark chocolate')
 
   })
@@ -116,6 +116,14 @@ describe('ShoppingList', function () {
     it('if \'removeItem\' is invoked passing in something that is not in the items array, it should throw an error', function () {
       expect(() => list.removeItem("error")).to.throw(Error);
       expect(() => list.removeItem(chocolate)).to.throw(Error);
+    });
+
+    describe('render', function () {
+
+      it('invoking the render method should concatenate the result of calling render on each item in the \'items\' array, wrapping it in a \'<ul>\'', function () {
+        expect(list.render()).to.equal('<ul><li class="completed_false"><span>apple</span><span>it is red</span></li>,<li class="completed_false"><span>banana</span><span>it is yellow</span></li>,<li class="completed_false"><span>soda</span><span>it is a drink</span></li></ul>')
+      });
+
     });
 
   });

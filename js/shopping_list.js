@@ -4,6 +4,10 @@ class ShoppingList {
     this.items = [];
   }
 
+  getList() {
+    return this.items
+  }
+
   addItem(shoppingListObject) {
     if(shoppingListObject instanceof (ShoppingListItem)) {
       this.items.push(shoppingListObject);
@@ -21,6 +25,15 @@ class ShoppingList {
     } else {
       throw new Error('invalid item');
     }
+  }
+
+  render() {
+    var renderedItems = [];
+
+    this.items.forEach(function(x) {
+      renderedItems.push(x.render());
+    })
+    return '<ul>' + renderedItems.toString() + '</ul>';
   }
 
 }
