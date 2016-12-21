@@ -57,7 +57,7 @@ describe('ShoppingList', function () {
    apple = new ShoppingListItem('apple', 'it is red');
    banana = new ShoppingListItem('banana', 'it is yellow')
    soda = new ShoppingListItem('soda', 'it\'s a drink');
-
+   chocolate = new ShoppingListItem('chocolate', 'it is dark chocolate')
 
   })
 
@@ -69,27 +69,57 @@ describe('ShoppingList', function () {
     expect(list).to.have.ownProperty("items");;
   });
 
-  it('ShoppingList should have a method named \'addItem\'', function () {
-    expect(ShoppingList).to.respondTo('addItem');
+  describe('addItem', function () {
+
+    beforeEach(function () {
+      list.addItem(apple);
+    });
+
+    it('ShoppingList should have a method named \'addItem\'', function () {
+      expect(ShoppingList).to.respondTo('addItem');
+    });
+
+    it('ShoppingList should add an item to the \'items\' array if the item is a ShoppingListItem', function () {
+      list.items.should.contain(apple);
+    });
+
+    it('passing in something that is not a ShoppingListItem should throw an error', function () {
+      expect(() => list.addItem("error")).to.throw(Error);
+    });
   });
 
-  it('ShoppingList should add an item to the \'items\' array if the item is a ShoppingListItem', function () {
-    expect(list.items).to.;
+
+
+  describe('removeItem', function () {
+
+    beforeEach(function () {
+      list.addItem(apple);
+      list.addItem(banana);
+      list.addItem(soda);
+    });
+
+    it('ShoppingList should have a method named \'removeItem\'', function () {
+      expect(ShoppingList).to.respondTo('removeItem');
   });
 
-  it.skip('passing in something that is not a ShoppingListItem should throw an error', function () {
-    expect(list.addItem("yes")).to.throw(ReferenceError, /invalid item/);
+    it('if a ShoppingListItem that exists in the \'items\' array is passed in to the \'removeItem\' method, it should remove that ShoppingListItem', function () {
+      list.items.should.contain(apple);
+      list.removeItem(apple);
+      list.items.should.not.contain(apple);
+    });
+
+    it('if \'removeItem\' is invoked with no paramaters, it should remove the last item', function () {
+      list.removeItem();
+      list.items.should.not.contain(soda);
+    });
+
+    it('if \'removeItem\' is invoked passing in something that is not in the items array, it should throw an error', function () {
+      expect(() => list.removeItem("error")).to.throw(Error);
+      expect(() => list.removeItem(chocolate)).to.throw(Error);
+    });
 
   });
 
-  it('ShoppingList should have a method named \'removeItem\'', function () {
-    expect(ShoppingList).to.respondTo('removeItem');
-  });
-
-  // it('if a ShoppingListItem that exists in the \'items\' array is passed in to the \'removeItem\' method, it should remove that ShoppingListItem', function () {
-  //   list.addItem(apple);
-  //   list.removeItem(apple);
-  // });
 
 
 });
