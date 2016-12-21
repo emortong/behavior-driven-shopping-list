@@ -34,19 +34,19 @@ describe('ShoppingListItem', function() {
 
   it('ShoppingListItem should have a method named \'check\' that sets the value of \'is_done\' to true', function () {
     item.check();
-    expect(ShoppingListItem).to.respondTo('check');
+    expect(item).to.respondTo('check');
     expect(item.is_done).to.equal(true);
   });
 
   it('ShoppingListItem should have a method named \'uncheck\' that sets the value of \'is_done\' to false', function () {
     item.uncheck();
-    expect(ShoppingListItem).to.respondTo('uncheck');
+    expect(item).to.respondTo('uncheck');
     expect(item.is_done).to.equal(false);
   });
 
   it('ShoppingListItem should have a method named \'render\' that construct and return an html formatted string. the string content are wrapped in <li> tags', function () {
-    expect(ShoppingListItem).to.respondTo('render');
-    expect(item.render()).to.equal('<li class="completed_false"><span>apple</span><span>it is red</span></li>');
+    expect(item).to.respondTo('render');
+    expect(item.render()).to.equal('<li class="completed_false"><span>apple</span><span> it is red</span></li>');
   });
 })
 
@@ -66,7 +66,7 @@ describe('ShoppingList', function () {
   });
 
   it('ShoppingList should have a property named \'items\'', function () {
-    expect(list).to.have.ownProperty("items");;
+    expect(list).to.have.ownProperty("items");
   });
 
   describe('addItem', function () {
@@ -121,7 +121,7 @@ describe('ShoppingList', function () {
     describe('render', function () {
 
       it('invoking the render method should concatenate the result of calling render on each item in the \'items\' array, wrapping it in a \'<ul>\'', function () {
-        expect(list.render()).to.equal('<ul><li class="completed_false"><span>apple</span><span>it is red</span></li>,<li class="completed_false"><span>banana</span><span>it is yellow</span></li>,<li class="completed_false"><span>soda</span><span>it is a drink</span></li></ul>')
+        expect(list.render()).to.equal('<ul><li class="completed_false"><span>apple</span><span> it is red</span></li>,<li class="completed_false"><span>banana</span><span> it is yellow</span></li>,<li class="completed_false"><span>soda</span><span> it is a drink</span></li></ul>')
       });
 
     });
