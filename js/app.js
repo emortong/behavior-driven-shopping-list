@@ -21,14 +21,17 @@ function add_to_shopping_list() {
 function changeCheckedStatus(idx, checkbox) {
   var itemsArr = newList.getList();
   var checked = document.getElementById(idx).checked;
+  console.log(checked)
   if(checked) {
     itemsArr[idx].check();
     renderingResult = newList.render();
     contentDiv.innerHTML = renderingResult;
+    document.getElementById(idx).checked = true;
   } else {
     itemsArr[idx].uncheck();
     renderingResult = newList.render();
     contentDiv.innerHTML = renderingResult;
+    document.getElementById(idx).checked = false;
   }
 }
 
