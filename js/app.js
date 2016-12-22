@@ -23,39 +23,12 @@ var itemsArr = newList.getList();
 function changeCheckedStatus(idx, checkbox) {
 
 
-
-
-  //else {
-  //   if(itemsChecked.indexOf(checkbox) !== -1){
-  //     itemsArr[idx].uncheck();
-  //     itemsChecked.splice(checkbox, 1);
-  //   }
-  // }
-  // renderingResult = newList.render();
-  // contentDiv.innerHTML = renderingResult;
-
-  // itemsChecked.forEach(function(x) {
-  //   x.checked;
-  // })
-
-
-  // console.log(idx, checkbox)
-  // var itemsArr = newList.getList();
-  // var isChecked = checkbox.checked;
-  // console.log(itemsArr[idx].is_done);
-  // if(isChecked) {
-  //   itemsArr[idx].check();
-  //   document.getElementById(idx).checked = true;
-  // } else {
-  //   itemsArr[idx].uncheck();
-  //   document.getElementById(idx).checked = false;
-  // }
-
-  // if(itemsArr[idx].is_done) {
-  //   document.getElementById(idx).checked = true;
-  // } else {
-  //   document.getElementById(idx).checked = false;
-  // }
+  var isChecked = checkbox.checked;
+  if(isChecked) {
+    newList.items[idx].check();
+  } else {
+    newList.items[idx].uncheck();
+  }
 
 }
 
