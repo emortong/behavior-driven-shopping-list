@@ -16,7 +16,7 @@ describe('ShoppingList', function () {
   });
 
   it('ShoppingList should have a property named \'items\'', function () {
-    expect(list).to.have.ownProperty("items");
+    expect(list).to.have.ownProperty('items');
   });
 
   describe('addItem', function () {
@@ -34,7 +34,7 @@ describe('ShoppingList', function () {
     });
 
     it('passing in something that is not a ShoppingListItem should throw an error', function () {
-      expect(() => list.addItem("error")).to.throw(Error);
+      expect(() => list.addItem('error')).to.throw(Error);
     });
   });
 
@@ -64,7 +64,7 @@ describe('ShoppingList', function () {
     });
 
     it('if \'removeItem\' is invoked passing in something that is not in the items array, it should throw an error', function () {
-      expect(() => list.removeItem("error")).to.throw(Error);
+      expect(() => list.removeItem('error')).to.throw(Error);
       expect(() => list.removeItem(chocolate)).to.throw(Error);
     });
 
