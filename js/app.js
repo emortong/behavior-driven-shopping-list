@@ -12,7 +12,29 @@ function add_to_shopping_list() {
   var desc = document.getElementById('desc').value;
   var new_shopping_list_item = new ShoppingListItem(title, desc);
   newList.addItem(new_shopping_list_item)
-  console.log(newList.items)
+  renderingResult = newList.render();
+  contentDiv.innerHTML = renderingResult;
+  document.getElementById('title').value = "";
+  document.getElementById('desc').value = "";
+}
+
+function changeCheckedStatus(idx, checkbox) {
+  var itemsArr = newList.getList();
+  var checked = document.getElementById(idx).checked;
+  if(checked) {
+    itemsArr[idx].check();
+    renderingResult = newList.render();
+    contentDiv.innerHTML = renderingResult;
+  } else {
+    itemsArr[idx].uncheck();
+    renderingResult = newList.render();
+    contentDiv.innerHTML = renderingResult;
+  }
+}
+
+function removeItemButtonClicked(idx) {
+  var itemsArr = newList.getList();
+  newList.removeItem(itemsArr[idx]);
   renderingResult = newList.render();
   contentDiv.innerHTML = renderingResult;
 }

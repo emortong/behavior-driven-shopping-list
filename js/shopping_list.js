@@ -29,11 +29,13 @@ class ShoppingList {
 
   render() {
     var renderedItems = [];
+    var idx = 0;
 
     this.items.forEach(function(x) {
-      renderedItems.push(x.render());
+      renderedItems.push(x.render(idx));
+      idx++
     })
-    return '<ul>' + renderedItems.toString() + '</ul>';
+    return '<ul>' + renderedItems.join('') + '</ul>';
   }
 
 }
